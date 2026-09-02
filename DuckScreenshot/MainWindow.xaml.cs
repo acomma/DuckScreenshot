@@ -19,6 +19,13 @@ namespace DuckScreenshot
         public MainWindow()
         {
             InitializeComponent();
+
+            // 关闭时隐藏而不是退出
+            this.Closing += (s, e) =>
+            {
+                e.Cancel = true; // 取消关闭操作
+                this.Hide();     // 隐藏窗口
+            };
         }
     }
 }

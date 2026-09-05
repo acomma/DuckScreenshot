@@ -1,4 +1,5 @@
-﻿using System.Text;
+using System.ComponentModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,13 +20,14 @@ namespace DuckScreenshot
         public MainWindow()
         {
             InitializeComponent();
+        }
 
-            // 关闭时隐藏而不是退出
-            this.Closing += (s, e) =>
-            {
-                e.Cancel = true; // 取消关闭操作
-                this.Hide();     // 隐藏窗口
-            };
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+
+            e.Cancel = true; // 取消关闭操作
+            Hide();          // 隐藏窗口
         }
     }
 }
